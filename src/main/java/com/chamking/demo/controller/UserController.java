@@ -4,6 +4,7 @@ import com.chamking.demo.entity.User;
 import com.chamking.demo.service.UserService;
 import com.chamking.demo.util.JsonResult;
 import com.chamking.demo.util.StrUtils;
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,12 @@ public class UserController {
         User user = userService.login(loginId, password);
         session.setAttribute(StrUtils.LOGIN_USER, user);
         return new JsonResult(1, "登陆成功！");
-
     }
+    @RequestMapping("/logOut.do")
+    public  JsonResult logOut(HttpSession session){
+        session.invalidate();
+        return new JsonResult(1,"注销登录成功");
+    }
+
 }
 
