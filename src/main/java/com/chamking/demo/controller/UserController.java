@@ -27,7 +27,7 @@ public class UserController {
     public JsonResult login(String loginId, String password, HttpSession session) {
         User user = userService.login(loginId, password);
         session.setAttribute(StrUtils.LOGIN_USER, user);
-        return new JsonResult(1, "登陆成功！");
+        return new JsonResult(1, user);
     }
     @RequestMapping("/logOut.do")
     public  JsonResult logOut(HttpSession session){

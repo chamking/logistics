@@ -4,7 +4,12 @@
 
 
 <mapper namespace = "com.chamking.demo.dao.UserDao">
-   <select id="login" parameterType="string" resultType="user">
-        select * from user where login_id = #{loginId}
+   <resultMap id="login" type="User">
+        <id column="login_id" property="loginId"></id>
+        <result column="password" property="password"></result>
+    </resultMap>
+    <!--int checkLogin();-->
+    <select id="login" resultMap="login">
+      select * from user where login_id = #{loginId}
     </select>
 </mapper>

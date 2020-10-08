@@ -20,7 +20,9 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
     @Override
     public User login(String loginId, String password) {
-        User user = userDao.login(loginId, password);
+        User user = userDao.login(loginId);
+        String s = MD5Utils.MD5(password);
+
         if (user == null) {
             throw new RuntimeException("账号错误");
         }

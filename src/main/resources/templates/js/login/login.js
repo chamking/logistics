@@ -14,23 +14,22 @@ layui.use(['layer', 'form', 'jquery'], function() {
             },
             dataType: 'json',
             async: false,
-            success: function (data) {
-                console.log(data);
-                if (data.code == 1) {
-                    $.cookie("loginId",data.data.loginId);
-                    console.log(data);
+            success: function (result) {
+                console.log(result);
+                if (result.code == 1) {
+                    $.cookie("loginId",result.info.loginId);
                     // console.log("data.loginid是"+data.loginId);
-                    alert("登录成功")
-                    window.location.href="index.html"
-                    // setTimeout(function() {
-                    //     layer.close(index);
-                    //     layer.msg('登录成功', {
-                    //         time: 800,
-                    //         icon: 1
-                    //     }, function () {
-                    //         window.location.href = 'index.html';
-                    //     });
-                    // }, 800);
+                    // alert("登录成功")
+                    // window.location.href="index.html"
+                    setTimeout(function() {
+                        layer.close(index);
+                        layer.msg('登录成功', {
+                            time: 800,
+                            icon: 1
+                        }, function () {
+                            window.location.href = 'index.html';
+                        });
+                    }, 800);
                 }
             }
         });
