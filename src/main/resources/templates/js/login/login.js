@@ -16,9 +16,11 @@ layui.use(['layer', 'form', 'jquery'], function() {
             async: false,
             success: function (data) {
                 console.log(data);
-                if (data.code === 1) {
-                    $.cookie("loginId", data.loginId);
-                    alert(data.info)
+                if (data.code == 1) {
+                    $.cookie("loginId",data.data.loginId);
+                    console.log(data);
+                    // console.log("data.loginid是"+data.loginId);
+                    alert("登录成功")
                     window.location.href="index.html"
                     // setTimeout(function() {
                     //     layer.close(index);

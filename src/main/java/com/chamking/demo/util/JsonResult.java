@@ -7,20 +7,28 @@ package com.chamking.demo.util;
  * description:
  */
 public class JsonResult {
-    private  int code;
+    private int code;
     private Object info;
+    private Object data;
+
+    public static JsonResult success(Object data) {
+
+        return new JsonResult(1, "成功", data);
+    }
+
+
+    public JsonResult() {
+    }
 
     public JsonResult(int code, Object info) {
         this.code = code;
         this.info = info;
     }
 
-    @Override
-    public String toString() {
-        return "JsonResult{" +
-                "code=" + code +
-                ", info=" + info +
-                '}';
+    public JsonResult(int code, Object info, Object data) {
+        this.code = code;
+        this.info = info;
+        this.data = data;
     }
 
     public int getCode() {
@@ -37,5 +45,21 @@ public class JsonResult {
 
     public void setInfo(Object info) {
         this.info = info;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "JsonResult{" +
+                "code=" + code +
+                ", info=" + info +
+                '}';
     }
 }
