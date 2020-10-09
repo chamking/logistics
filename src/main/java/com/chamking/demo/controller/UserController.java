@@ -29,7 +29,7 @@ public class UserController {
         session.setAttribute(StrUtils.LOGIN_USER, user);
         return new JsonResult(1, user);
     }
-    @RequestMapping("/logOut.do")
+    @RequestMapping("/logout.do")
     public  JsonResult logOut(HttpSession session){
         session.invalidate();
         return new JsonResult(1,"注销登录成功");

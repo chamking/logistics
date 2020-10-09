@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 命名空间 是唯一的，必须是Dao接口的全限定名-->
+<mapper namespace="com.chamking.demo.dao.DriverInfoDao">
+    <select id="findAllId" parameterType="String" resultType="String">
+      select id from driverinfo
+    </select>
+
+
+    <resultMap id="findAll" type="DriverInfo">
+        <id column="id" property="id"></id>
+        <result column="driver_name" property="driverName"></result>
+        <result column="phone" property="phone"></result>
+        <result column="state" property="state"></result>
+        <result column="car_no" property="carNo"></result>
+        <result column="car_type" property="carType"></result>
+    </resultMap>
+    <select id="findAll" parameterType="int" resultMap="findAll">
+        select * from driverinfo
+    </select>
+</mapper>

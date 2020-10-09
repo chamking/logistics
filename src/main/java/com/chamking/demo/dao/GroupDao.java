@@ -1,12 +1,12 @@
 package com.chamking.demo.dao;
 
-import com.chamking.demo.entity.FunctionWithGroup;
+import com.chamking.demo.entity.Function;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 public interface GroupDao  {
-    List<FunctionWithGroup> selectFunc(String loginId);
+    List<Function> selectFunc(String loginId);
     
 }

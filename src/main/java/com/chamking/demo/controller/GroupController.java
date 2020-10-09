@@ -1,5 +1,6 @@
 package com.chamking.demo.controller;
 
+import com.chamking.demo.entity.Function;
 import com.chamking.demo.service.GroupService;
 import com.chamking.demo.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.acl.Group;
+import java.util.List;
 
 /**
  * projectName:logistics
@@ -21,10 +23,10 @@ public class GroupController {
 
     @Autowired
     private GroupService groupService ;
-    @RequestMapping("/seletFunc.do")
+    @RequestMapping("/selectFunc.do")
     public JsonResult selectFunc(String loginId){
-        JsonResult jsonResult = groupService.selectFunc(loginId);
-        return jsonResult;
+        List<Function> list = groupService.selectFunc(loginId);
+        return new JsonResult(1,list);
     }
 
 }

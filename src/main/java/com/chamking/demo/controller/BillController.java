@@ -27,6 +27,12 @@ public class BillController {
         List<BillInfo> list = billService.selectBill(pageNum, limit);
         long total = ((Page)list).getTotal();
         return  new TableResult(200,"success",total,list);
-
     }
+    @RequestMapping("/findNotRelease.do")
+    public TableResult billRelease(Integer pageNum, Integer limit) {
+        List<BillInfo> list = billService.selectBill(pageNum, limit);
+        long total = ((Page) list).getTotal();
+        return new TableResult(200, "success", total, list);
+    }
+
 }

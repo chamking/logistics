@@ -2,13 +2,13 @@ let login = $.cookie("loginId");
 let funArray = [];
 $.ajax({
     type: 'get',
-    url: nginx_url + '/selectFunc/' + login,
+    url: nginx_url + '/group/selectFunc.do?loginId=' + login,
     async: false,
     dataType: 'json',
     success: function (result) {
         funArray = [];
-        $.each(result, function (i, item) {
-            funArray.push(item.functionId);
+        $.each(result.info, function (i, item) {
+            funArray.push(item.id);
         })
     }
 });

@@ -5,16 +5,16 @@
 <mapper namespace="com.chamking.demo.dao.GroupDao">
     <resultMap id="FunctionWithGroup" type="FunctionWithGroup">
         <id column="id" property="id"></id>
-        <result column="function_id" property="functionId"></result>
-        <result column="group_id" property="groupId"></result>
+        <result column="pageFunction" property="page_function"></result>
+        <result column="pageName" property="page_name"></result>
     </resultMap>
 
     <!--List<FunctionWithGroup> selectFunc(String id);-->
     <select id="selectFunc" resultMap="FunctionWithGroup" parameterType="String">
-        select fun.* from functionwithgroup fun
-        join userwithgroup ug on ug.group_id = fun.group_id
-        JOIN user u on u.login_id = ug.user_id
-        where u.login_id = #{loginId}
+        select f.* from function_ as f
+        join functionwithgroup fwg on f.id = fwg.function_id
+        JOIN userwithgroup uwp on fwg.group_id = uwp.group_id
+        where uwp.user_id = #{loginId}
     </select>
 
 </mapper>
